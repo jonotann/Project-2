@@ -1,7 +1,10 @@
-require("dotenv").config();
+//Sets igdb key enviroment variable, use .env file in config folder to add additional enviroment variables.
+require("dotenv").config({path: __dirname + "/config/.env"});
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+
+var igdb = require("./routes/igdbApi");
 
 var db = require("./models");
 
