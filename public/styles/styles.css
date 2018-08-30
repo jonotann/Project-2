@@ -1,3 +1,18 @@
-.list-group-item {
-  line-height: 2.5;
+.logo {
+    width: 200px;
+    height: 132px;
+}
+.hero {
+    background-color: #FFC107;
+}
+.navbar {
+    background-color: #738290;
+    color: white;
+}
+.section {
+    background-color: #738290;
+    color: white;
+}
+#slate {
+    color: white;
 }
