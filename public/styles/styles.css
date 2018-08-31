@@ -1,9 +1,15 @@
 .logo {
     width: 200px;
     height: 132px;
+    padding: none;
+    margin: none;
 }
 .hero {
     background-color: #FFC107;
+}
+.hero-body{
+    padding-top: none;
+    margin-top: none;
 }
 .navbar {
     background-color: #738290;
@@ -15,4 +21,24 @@
 }
 #slate {
     color: white;
+}
+.tileSection {
+    background-color: #FFC107;
+}
+.tile {
+    padding: 10px;
+    margin: 5px;
+}
+#navList {
+    margin: 10px 10px 0px 10px;
+    padding-right: 15px;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    color: #000000;
+}
+
+#navList:hover {
+    color: #CFDBD5;
+    opacity: .75;
 }
