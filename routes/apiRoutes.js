@@ -21,4 +21,32 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+//Creates tournament and associated bracket
+  app.post("/api/tournament/create", function(req, res) {
+    db.Tournament.create(req.body).then(function(result) {
+
+      console.log(result.dataValues.id);
+      var TournamentId = {
+        TournamentId: result.dataValues.id
+      };
+
+
+      db.Bracket.create(TournamentId).then(function(result) {
+        console.log(result);
+      });
+
+    });
+  });
+
+//Adds user/team to tournament
+  app.put("/api/tournament/join/:id", function(req, res) {
+    db.Bracket.findAll({ where: {TournamentId: req.params.id }}).then(function(result) {
+      
+      console.log(result);
+
+
+    });
+    
+  });
 };
