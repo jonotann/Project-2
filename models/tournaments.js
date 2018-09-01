@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
         currentTeams: DataTypes.INTEGER,
         teamSize: DataTypes.INTEGER,
         entryFee: DataTypes.FLOAT,
-        prize: DataTypes.FLOAT
+        prize: DataTypes.FLOAT,
+        image: DataTypes.STRING
     });
 
     Tournament.associate = function(models) {

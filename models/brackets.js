@@ -63,7 +63,8 @@ module.exports = function(sequelize, DataTypes) {
         61: DataTypes.INTEGER,
         62: DataTypes.INTEGER,
         63: DataTypes.INTEGER,
-        64: DataTypes.INTEGER
+        64: DataTypes.INTEGER,
+        max: DataTypes.INTEGER
     });
 
     return Bracket;

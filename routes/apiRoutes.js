@@ -1,52 +1,71 @@
 var db = require("../models");
+var getImage = require("./igdbApi");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 
 //Creates tournament and associated bracket
   app.post("/api/tournament/create", function(req, res) {
-    db.Tournament.create(req.body).then(function(result) {
+    
+    var game = req.body.game;
+    //api is called but will not return url
+    var image = getImage(game);
 
-      console.log(result.dataValues.id);
-      var TournamentId = {
-        TournamentId: result.dataValues.id
-      };
+      db.Tournament.create(req.body).then(function(result) {
 
+        var TournamentId = {
+          TournamentId: result.dataValues.id,
+          max: result.dataValues.totalTeams,
+          image: image
+        };
 
-      db.Bracket.create(TournamentId).then(function(result) {
-        console.log(result);
+        db.Bracket.create(TournamentId).then(function(result) {
+        
       });
-
     });
   });
 
-//Adds user/team to tournament
+//Adds user/team to tournament. Tournament id from url, team id in body.
   app.put("/api/tournament/join/:id", function(req, res) {
+    //call for table associated with tournament.
     db.Bracket.findAll({ where: {TournamentId: req.params.id }}).then(function(result) {
       
-      console.log(result);
+      var bracket = result[0].dataValues;
+      var teamID = req.body.team;
+      var max = parseInt(bracket.max) + 1;
+      var targetKey = null;
 
+      //check each table value to find first null.
+      Object.keys(bracket).forEach(function(key) {
 
+        if(parseInt(key) < max){
+            
+          if(bracket[key] === null && targetKey === null) {
+            
+            targetKey = key;
+          
+          }
+        }
+      });
+
+    //if open slot, updates bracket with new team.
+    if(targetKey != null) {
+      
+      var updateValues = {};
+      updateValues[targetKey] = 33;
+
+        db.Bracket.update(updateValues, { where: {TournamentId: req.params.id}}).then(function(result) {
+          
+          if(result[0] == 1){
+            console.log("joined");
+          }else{
+            console.log("failed");
+          }
+        });
+      }else{
+        return;
+      }
     });
-    
+
+    res.end();
   });
 };

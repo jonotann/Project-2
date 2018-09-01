@@ -4,8 +4,6 @@ const client = igdb(process.env.igdbKey);
 
 function gameData(game) {
     
-    console.log(game);
-
     client.games({
         search: game
     },[
@@ -16,8 +14,11 @@ function gameData(game) {
         'cover'
     ]
     ).then(res => {
-        console.log(res.body);
+        //console.log(res.body);
+        var image = res.body[0].cover.url;
+        console.log(image);
+        //not returning(async issue?)
+        return image;
     });
-
 };
 module.exports = gameData;
