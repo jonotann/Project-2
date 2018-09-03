@@ -1,8 +1,9 @@
 const igdb = require('igdb-api-node').default;
+var db = require("../models");
 
 const client = igdb(process.env.igdbKey);
 
-function gameData(game) {
+function gameData(game, id) {
     
     client.games({
         search: game
@@ -14,11 +15,13 @@ function gameData(game) {
         'cover'
     ]
     ).then(res => {
-        //console.log(res.body);
+        
         var image = res.body[0].cover.url;
-        console.log(image);
-        //not returning(async issue?)
-        return image;
+        
+        db.Tournament.update({image: image}, {where: {id: id}}).then(function(result) {
+            return;
+        });
+
     });
 };
 module.exports = gameData;
