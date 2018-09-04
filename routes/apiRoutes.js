@@ -8,18 +8,20 @@ module.exports = function(app) {
     
     var game = req.body.game;
     //api is called but will not return url
-    var image = getImage(game);
-
       db.Tournament.create(req.body).then(function(result) {
+        
+        var id = result.dataValues.id;
+        //calls igdb api to update tournament with image url.
+        getImage(game, id);
 
         var TournamentId = {
           TournamentId: result.dataValues.id,
           max: result.dataValues.totalTeams,
-          image: image
+          team: result.dataValues.team
         };
-
+        //Creates tournament Bracket.
         db.Bracket.create(TournamentId).then(function(result) {
-        
+          
       });
     });
   });
@@ -67,5 +69,13 @@ module.exports = function(app) {
     });
 
     res.end();
+  });
+
+  app.post("/api/team/create", function(req, res) {
+
+  });
+
+  app.put("/api/team/join/:id", function(req, res) {
+
   });
 };
