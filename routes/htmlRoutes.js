@@ -62,12 +62,9 @@ module.exports = function(app){
 
   //GETs
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+      
       });
-    });
   });
 	app.get('/adminsignin', function(req, res){
 		res.render('adminlog', {

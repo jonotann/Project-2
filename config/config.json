@@ -1,14 +1,9 @@
 {
   "development": {
-<<<<<<< HEAD
+
     "username": "root",
     "password": "Cardenas34",
     "database": "dbUsers",
-=======
-    "username": "Alex-Preissler",
-    "password": "Paintball426*",
-    "database": "p2test",
->>>>>>> 3ae4f985ec672d9a6f2a851f4ee15f6429ac87db
     "host": "localhost",
     "dialect": "mysql"
   },
