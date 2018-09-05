@@ -1,8 +1,9 @@
 {
   "development": {
-    "username": "Alex-Preissler",
-    "password": "Paintball426*",
-    "database": "p2test",
+
+    "username": "root",
+    "password": "Cardenas34",
+    "database": "dbUsers",
     "host": "localhost",
     "dialect": "mysql"
   },
