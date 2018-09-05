@@ -91,7 +91,7 @@ module.exports = function(app){
 		if (req.isAuthenticated()) {
 			res.render('index', {
         username: req.user.username,
-        message1: "admin has logged in"
+        message1: "<li><a href='http://localhost:3000'>sign out</a> admin has logged in</li>"
 			})
 		} else {
 			res.redirect('/')

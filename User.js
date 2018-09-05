@@ -7,6 +7,8 @@ function User (userObj) {
 	this.password = userObj.password
 }
 
+
+
 module.exports = User
 
 module.exports.saveUser = function(userObj, callback){
