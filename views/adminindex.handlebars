@@ -51,22 +51,22 @@
         <h2>This is our Home Page!</h2>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="tournamnet-game">TOURNAMENT</label>
-            <input type="text" id="tournamnet-game" class="form-control" aria-describedby="tournamnet-game" placeholder="Enter tournamnet game">
+            <label for="tournament-game">TOURNAMENT</label>
+            <input type="text" id="tournament-game" class="form-control" aria-describedby="tournament-game" placeholder="Enter tournament game">
           </div>
           <div class="form-group">
-            <label for="tournamnet-description">DESCRIPTION</label>
-            <textarea class="form-control" id="tournamnet-description" aria-describedby="tournamnet-description" placeholder="Enter Tournament description"></textarea>
-            <label for="tournamnet-TotalTeams"># OF TEAMS</label>
-            <input type="text" id="tournamnet-TotalTeams" class="form-control" aria-describedby="tournamnet-TotalTeams" placeholder="Enter Tournament TotalTeams">
-            <label for="tournamnet-TeamSize">SIZE OF TEAMS</label>
-            <input type="Text" id="tournamnet-TeamSize" class="form-control" aria-describedby="tournamnet-TeamSize" placeholder="Enter Tournament TeamSize">
-                        <label for="tournamnet-entryFee">ENTRY FEE</label>
-            <input type="text" id="tournamnet-entryFee" class="form-control" aria-describedby="tournamnet-entryFee" placeholder="Enter Tournament entryFee">
-                                    <label for="tournamnet-prize">prize</label>
-            <input type="text" id="tournamnet-prize" class="form-control" aria-describedby="tournamnet-prize" placeholder="Enter Tournament prize">
-            <label for="tournamnet-Image">Image</label>
-            <input type="text" id="tournamnet-Image" class="form-control" aria-describedby="tournamnet-Image" placeholder="Enter Tournament Image">
+            <label for="tournament-description">DESCRIPTION</label>
+            <textarea class="form-control" id="tournament-description" aria-describedby="tournament-description" placeholder="Enter Tournament description"></textarea>
+            <label for="tournament-totalTeams"># OF TEAMS</label>
+            <input type="text" id="tournament-totalTeams" class="form-control" aria-describedby="tournament-totalTeams" placeholder="Enter Tournament TotalTeams">
+            <label for="tournament-teamSize">SIZE OF TEAMS</label>
+            <input type="Text" id="tournament-teamSize" class="form-control" aria-describedby="tournament-TeamSize" placeholder="Enter Tournament TeamSize">
+                        <label for="tournament-entryFee">ENTRY FEE</label>
+            <input type="text" id="tournament-entryFee" class="form-control" aria-describedby="tournament-entryFee" placeholder="Enter Tournament entryFee">
+                        <label for="tournament-prize">prize</label>
+            <input type="text" id="tournament-prize" class="form-control" aria-describedby="tournament-prize" placeholder="Enter Tournament prize">
+            <label for="tournament-Image">Image</label>
+            <input type="text" id="tournament-Image" class="form-control" aria-describedby="tournament-Image" placeholder="Enter Tournament Image">
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -88,10 +88,10 @@
         </div>
         <div class="card">
                     <h3>Examples:</h3>
-        <ul id="tournamnet-list" class="list-group">
-          {{#each tournamnets}}
+        <ul id="tournament-list" class="list-group">
+          {{#each tournaments}}
           <li data-id="{{this.id}}" class="list-group-item">
-            <a href="tournamnet/{{this.id}}">{{this.game}}</a>
+            <a href="tournament/{{this.id}}">{{this.game}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
@@ -113,8 +113,6 @@
             </div>
         </div>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
-
     </section>
     <section class="hero is-fullheight">
         <div class="hero-body">

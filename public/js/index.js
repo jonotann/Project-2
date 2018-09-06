@@ -1,14 +1,16 @@
+$(document).ready(function() {
 
+$("#submit").on("click", function(event){
 
-$("#submit").on("click", function(){
- var game = $("#tournamnet-game").val().trim();
- var totalTeam = $("#tournament-totalTeams");
- var currentTeams = $("#tournament-currentTeams");
- var teamSize = $("#tournament-teamSize");
- var entryFee = $("#tournament-entryFee");
- var prize = $("#tournament-prize");
- var team = false;
-var tournament = {
+  event.preventDefault();
+
+  var game = $("#tournament-game").val().trim();
+  var totalTeams = $("#tournament-totalTeams").val().trim();
+  var teamSize = $("#tournament-teamSize").val().trim();
+  var entryFee = $("#tournament-entryFee").val().trim();
+  var prize = $("#tournament-prize").val().trim();
+  var team = false;
+  var tournament = {
   game: game,
   totalTeams: totalTeams,
   currentTeams: 0,
@@ -18,15 +20,18 @@ var tournament = {
   team: team
 }
 
-$.ajax({
-  type: "POST",
-  url: "/api/tournament/create",
-  data: tournament
-}).then(function(res){
-  console.log(res);
+console.log(tournament);
 
-})
+$.ajax('/api/tournament/create', {
+  type: 'POST',
+  data: tournament
+}).then(function() {
+
 });
+
+});
+
+/*
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveTournament: function(tournament) {
@@ -122,3 +127,6 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $tournamentList.on("click", ".delete", handleDeleteBtnClick);
+*/
+
+});

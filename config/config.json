@@ -2,8 +2,8 @@
   "development": {
 
     "username": "root",
-    "password": "Cardenas34",
-    "database": "dbUsers",
+    "password": "root",
+    "database": "clashdb",
     "host": "localhost",
     "dialect": "mysql"
   },

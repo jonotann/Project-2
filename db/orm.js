@@ -4,8 +4,8 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'root',
-	database: 'dbUsers',
-	port:3307
+	database: 'clashdb',
+	port: 3306
 })
 function connectToDB(){
 	connection.connect(function(err){
