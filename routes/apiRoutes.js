@@ -3,30 +3,30 @@ var getImage = require("./igdbApi");
 
 module.exports = function(app) {
 
-//Creates tournament and associated bracket
+  //Creates tournament and associated bracket
   app.post("/api/tournament/create", function(req, res) {
     
     var game = req.body.game;
     //api is called but will not return url
-      db.Tournament.create(req.body).then(function(result) {
+    db.Tournament.create(req.body).then(function(result) {
         
-        var id = result.dataValues.id;
-        //calls igdb api to update tournament with image url.
-        getImage(game, id);
+      var id = result.dataValues.id;
+      //calls igdb api to update tournament with image url.
+      getImage(game, id);
 
-        var TournamentId = {
-          TournamentId: result.dataValues.id,
-          max: result.dataValues.totalTeams,
-          team: result.dataValues.team
-        };
-        //Creates tournament Bracket.
-        db.Bracket.create(TournamentId).then(function(result) {
+      var TournamentId = {
+        TournamentId: result.dataValues.id,
+        max: result.dataValues.totalTeams,
+        team: result.dataValues.team
+      };
+      //Creates tournament Bracket.
+      db.Bracket.create(TournamentId).then(function(result) {
           
       });
     });
   });
 
-//Adds user/team to tournament. Tournament id from url, team id in body.
+  //Adds user/team to tournament. Tournament id from url, team id in body.
   app.put("/api/tournament/join/:id", function(req, res) {
     //call for table associated with tournament.
     db.Bracket.findAll({ where: {TournamentId: req.params.id }}).then(function(result) {
@@ -70,11 +70,14 @@ module.exports = function(app) {
 
     res.end();
   });
-
+  //Allows Creation of a Team.
   app.post("/api/team/create", function(req, res) {
+    
+    var team = req.body.team;
+
 
   });
-
+  //Adds user to team on join.
   app.put("/api/team/join/:id", function(req, res) {
 
   });

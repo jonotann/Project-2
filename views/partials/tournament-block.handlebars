@@ -1,0 +1,20 @@
+<li>
+    <img src="{{image}}">
+    Game: {{game}}
+    Registration End: {{regEnd}}
+    Tournament Start: {{tournStart}}
+    Total Teams/Players: {{totalTeams}}
+    Teams/Players currently registered: {{currentTeams}}
+    Team Size: {{teamSize}}
+    Entry Fee:{{entryFee}}
+    Prize: {{prize}}
+    <img src="{{image}}">
+    Game Type:
+    {{#if team}}
+        Team game
+    {{/if}}
+    {{#unless team}}
+        Solo game
+    {{/unless}}
+    <button class='join-tournament' data-id="{{id}}">Join</button>
+</li>
