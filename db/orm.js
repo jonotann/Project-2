@@ -5,7 +5,6 @@ var connection = mysql.createConnection({
 	user: 'root',
 	password: 'root',
 	database: 'dbUsers',
-
 	port:3307
 })
 function connectToDB(){

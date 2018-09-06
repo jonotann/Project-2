@@ -1,7 +1,28 @@
 var db = require("../models");
 var getImage = require("./igdbApi");
 
+
 module.exports = function(app) {
+
+  app.get("/api/tournaments", function(req, res) {
+    db.Tournament.findAll({}).then(function(dbTournaments) {
+      res.json(dbTournaments);
+    });
+  });
+
+  // Create a new example
+  app.post("/api/tournament", function(req, res) {
+    db.Tournament.create(req.body).then(function(dbTournament) {
+      res.json(dbTournament);
+    });
+  });
+
+  // Delete an example by id
+  app.delete("/api/tournaments/:id", function(req, res) {
+    db.Tournament.destroy({ where: { id: req.params.id } }).then(function(dbTournament) {
+      res.json(dbTournament);
+    });
+  });
 
 //Creates tournament and associated bracket
   app.post("/api/tournament/create", function(req, res) {

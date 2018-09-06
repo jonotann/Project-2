@@ -46,33 +46,56 @@
     <!--LISTED MATCHES SECTION-->
     <section class="section is-fullheight level">
         <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
+           
+                    <h1>{{msg}}</h1>
+        <h2>This is our Home Page!</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="tournamnet-game">TOURNAMENT</label>
+            <input type="text" id="tournamnet-game" class="form-control" aria-describedby="tournamnet-game" placeholder="Enter tournamnet game">
+          </div>
+          <div class="form-group">
+            <label for="tournamnet-description">DESCRIPTION</label>
+            <textarea class="form-control" id="tournamnet-description" aria-describedby="tournamnet-description" placeholder="Enter Tournament description"></textarea>
+            <label for="tournamnet-TotalTeams"># OF TEAMS</label>
+            <input type="text" id="tournamnet-TotalTeams" class="form-control" aria-describedby="tournamnet-TotalTeams" placeholder="Enter Tournament TotalTeams">
+            <label for="tournamnet-TeamSize">SIZE OF TEAMS</label>
+            <input type="Text" id="tournamnet-TeamSize" class="form-control" aria-describedby="tournamnet-TeamSize" placeholder="Enter Tournament TeamSize">
+                        <label for="tournamnet-entryFee">ENTRY FEE</label>
+            <input type="text" id="tournamnet-entryFee" class="form-control" aria-describedby="tournamnet-entryFee" placeholder="Enter Tournament entryFee">
+                                    <label for="tournamnet-prize">prize</label>
+            <input type="text" id="tournamnet-prize" class="form-control" aria-describedby="tournamnet-prize" placeholder="Enter Tournament prize">
+            <label for="tournamnet-Image">Image</label>
+            <input type="text" id="tournamnet-Image" class="form-control" aria-describedby="tournamnet-Image" placeholder="Enter Tournament Image">
+          </div>
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+
+            
             <div class="card-content">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4 level-item">All games available</p>
+                        <p class="title is-4 level-item">ADMIN CREATE A TOURNAMENT</p>
                     </div>
                 </div>
 
                 <div class="content">
                     <p class="level-item">This is what separates the casual players from the professionals, think you've
                         got the stuff?</p>
-                    <p class="level-item">Give it a try! Tag us on your best clips on twitter
-                        <a> &nbsp; @clashEncounter</a>.</p>
-                    <a class="level-item" href="#">#CEPRO</a> <a class="level-item" href="#">#CEMEONLINE</a>
+
                 </div>
             </div>
         </div>
         <div class="card">
-            <div class="card-image">
-                <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-                </figure>
-            </div>
+                    <h3>Examples:</h3>
+        <ul id="tournamnet-list" class="list-group">
+          {{#each tournamnets}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="tournamnet/{{this.id}}">{{this.game}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
             <div class="card-content">
                 <div class="media">
                     <div class="media-content">
@@ -89,6 +112,9 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+
     </section>
     <section class="hero is-fullheight">
         <div class="hero-body">

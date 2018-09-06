@@ -1,99 +1,124 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
 
+
+$("#submit").on("click", function(){
+ var game = $("#tournamnet-game").val().trim();
+ var totalTeam = $("#tournament-totalTeams");
+ var currentTeams = $("#tournament-currentTeams");
+ var teamSize = $("#tournament-teamSize");
+ var entryFee = $("#tournament-entryFee");
+ var prize = $("#tournament-prize");
+ var team = false;
+var tournament = {
+  game: game,
+  totalTeams: totalTeams,
+  currentTeams: 0,
+  teamSize: teamSize,
+  entryFee: entryFee,
+  prize: prize,
+  team: team
+}
+
+$.ajax({
+  type: "POST",
+  url: "/api/tournament/create",
+  data: tournament
+}).then(function(res){
+  console.log(res);
+
+})
+});
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveTournament: function(tournament) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "/api/tournaments/create",
+      data: JSON.stringify(tournament)
     });
   },
-  getExamples: function() {
+  getTournament: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/tournaments",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deleteTournament: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/tournaments/" + id,
       type: "DELETE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
+// refreshtournaments gets new tournaments from the db and repopulates the list
+var refreshTournaments = function() {
+  API.getTournaments().then(function(data) {
+    var $tournaments = data.map(function(tournament) {
       var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+        .game(tournament.game)
+        .attr("href", "/tournament/" + tournament.id);
 
       var $li = $("<li>")
         .attr({
           class: "list-group-item",
-          "data-id": example.id
+          "data-id": tournament.id
         })
         .append($a);
 
       var $button = $("<button>")
         .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+        .game("ｘ");
 
       $li.append($button);
 
       return $li;
     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
+    $tournamentList.empty();
+    $tournamentList.append($tournaments);
   });
 };
 
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
+// handleFormSubmit is called whenever we submit a new tournament
+// Save the new tournament to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var tournament = {
+    game: $tournamentgame.val().trim(),
+    description: $tournamentDescription.val().trim(),
+    totalTeams: $tournamentTotalTeams.val().trim(),
+    teamSize: $tournamentTeamSize.val().trim(),
+    image: $tournamentImage.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.saveTournament(tournament).then(function() {
+    refreshTournaments();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $tournamentgame.val("");
+  $tournamentDescription.val("");
+  $tournamentTotalTeams.val("")
+  $tournamentTeamSize.val("")
+  $tournamentImage.val("")
 };
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
+// handleDeleteBtnClick is called when an tournament's delete button is clicked
+// Remove the tournament from the db and refresh the list
 var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteTournament(idToDelete).then(function() {
+    refreshTournaments();
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$tournamentList.on("click", ".delete", handleDeleteBtnClick);
