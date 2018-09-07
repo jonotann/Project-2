@@ -162,10 +162,14 @@ module.exports = function(app){
 
 			console.log(searchArray);
 			//Pulls team info for each id provided and renders.
-			db.Team.findAll({ where: {id: {[Op.or]: searchArray}}}).then(function(response) {
+			db.tbluser.findAll({attributes: ['username'], where: {userId: {[Op.or]: searchArray}}}).then(function(response) {
+				
+				console.log(response);
+
 				var teamsObj = {
 					teams: response
 				}
+				
 				res.render('brackets', teamsObj);
 			});
 		});
