@@ -2,9 +2,9 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
 	host: 'localhost',
-	user: 'root',
-	password: 'root',
-	database: 'dbUsers',
+	user: 'Alex-Preissler',
+	password: 'Paintball426*',
+	database: 'p2test',
 	port:3306,
 })
 
@@ -35,3 +35,4 @@ function findUser(username, callback){
 	})
 }
 module.exports.findUser = findUser;
+

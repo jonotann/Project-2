@@ -53,7 +53,7 @@ module.exports = function(app) {
     if(targetKey != null) {
       
       var updateValues = {};
-      updateValues[targetKey] = 33;
+      updateValues[targetKey] = teamID;
 
         db.Bracket.update(updateValues, { where: {TournamentId: req.params.id}}).then(function(result) {
           
