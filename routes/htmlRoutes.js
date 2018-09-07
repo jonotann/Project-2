@@ -3,6 +3,8 @@ var UserModel = require('../User.js');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var orm = require('../db/orm.js');
+var Sequelize = require("sequelize");
+var Op = Sequelize.Op;
 /*
 module.exports = function(app) {
   // Load index page
@@ -120,4 +122,55 @@ module.exports = function(app){
 		});
 	});
 
+	//retrieves and displays information for each tournament in database w/ join button holding unique tournament id.
+	app.get('/tournaments', function(req, res) {
+		db.Tournament.findAll().then(function(result) {
+			console.log(result);
+			var tournamentsObj = {
+				tournaments: result
+			}
+			res.render('tournaments', tournamentsObj);
+		});
+	});
+
+	//retrieves and displays teams in tournament
+	app.get('/tournaments/bracket/:id', function(req, res) {
+
+		var tId = req.params.id;
+	
+		//pulls the tournament bracket
+		db.Bracket.findAll({ where: {TournamentId: tId}}).then(function(result) {
+
+			var bracket = result[0].dataValues;
+			var teamsArray = [];
+
+			//constructs an array of team ids to search
+			Object.keys(bracket).forEach(function(key) {
+
+				teamsArray.push(bracket[key]);
+				
+			});
+
+			var searchArray = [];
+
+			//removes non-teamId data and any null values.
+			for(var i=0; i<(teamsArray.length - 6); i++) {
+				if(teamsArray[i] != null){
+					searchArray.push(teamsArray[i]);
+				}
+			}
+
+			console.log(searchArray);
+			//Pulls team info for each id provided and renders.
+			db.Team.findAll({ where: {id: {[Op.or]: searchArray}}}).then(function(response) {
+				var teamsObj = {
+					teams: response
+				}
+				res.render('brackets', teamsObj);
+			});
+		});
+	});
+
+
 };
+
