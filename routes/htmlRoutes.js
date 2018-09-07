@@ -38,8 +38,17 @@ module.exports = function(app){
 	  // Load tournament page and pass in an tournament by id
 		app.get("/tournament/:id", function(req, res) {
 			db.Tournament.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-				res.render("tournament", {
-					tournament: dbTournament
+				res.render("tournaments", {
+					tournament: dbTournaments
+				});
+			});
+		});
+
+		app.get("/tournaments", function(req, res) {
+			db.Tournament.findAll({}).then(function(dbTournaments) {
+				res.render("example", {
+					msg: "Welcome!",
+					tournaments: dbTournaments
 				});
 			});
 		});
@@ -72,7 +81,7 @@ module.exports = function(app){
 	});
 
 	app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.Tournament.findAll({}).then(function(dbTournaments) {
       res.render("adminindex", {
         msg: "Welcome!",
         tournaments: dbTournaments
