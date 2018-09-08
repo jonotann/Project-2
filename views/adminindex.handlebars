@@ -1,0 +1,91 @@
+<!--MAIN HERO SECTION-->
+<section class="hero is-fullheight">
+    <!--HEAD NAVIGATION-->
+    <header class="hero-head">
+        <nav class="navbar">
+            <div class="navbar-brand is-flex">
+                <div class="navbar-start">
+                    <div class="blank">
+                    </div>
+                </div>
+                <div class="navbar-end">
+                    <div class="navButtons" id="navLi">
+                        <ul class="level-item">
+                            <li><a href="http://localhost:3000/" id="navList">Home</a></li>
+                            <li><a href="http://localhost:3000/meettheteam" id="navList">Meet the Team</a></li>
+                            <li><a href="http://localhost:3000/adminsignin" id="navList">Login</a></li>
+                            <li id ='navList'>{{username}} </li>
+                            <li> {{{ message1}}}</li> 
+                            <li> {{{ message2}}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero-body level">
+        <div class="logo-main level-item">
+            <a class="logo" href="#">
+                <img src="./images/project-2-logo-01.png " alt="Clash Encounter">
+            </a>
+        </div>
+    </div>
+</section>
+<!--LISTED MATCHES SECTION-->
+<section class="section is-fullheight">
+    <div class="card is-centered">
+
+        <div class="card-content">
+            <div class="media">
+                <div class="media-content">
+                    <p class="title is-4 level-item">ADMIN CREATE A TOURNAMENT</p>
+                </div>
+            </div>
+            <div class="content">
+                <p class="level-item">This is what separates the casual players from the professionals, think you've got
+                    the stuff?
+                </p>
+            </div>
+            <br>
+            {{!-- INPUTS --}}
+            <h1>{{msg}}</h1>
+            <form class="clearfix mb-4" action="POST">
+                <div class="form-group">
+                    <label for="tournament-game">TOURNAMENT</label>
+                    <input type="text" id="tournament-game" class="input form-control" aria-describedby="tournament-game" placeholder="Enter tournament game">
+                </div>
+                <div class="form-group">
+                    <label for="tournament-description">DESCRIPTION</label>
+                    <textarea class="input form-control" id="tournament-description" aria-describedby="tournament-description" placeholder="Enter Tournament description"></textarea>
+                    <br>
+                    <label for="tournament-totalTeams"># OF TEAMS</label>
+                    <input type="text" id="tournament-totalTeams" class="input form-control" aria-describedby="tournament-totalTeams" placeholder="Enter Tournament TotalTeams">
+                    <br>
+                    <label for="tournament-teamSize">SIZE OF TEAMS</label>
+                    <input type="Text" id="tournament-teamSize" class="input form-control" aria-describedby="tournament-TeamSize" placeholder="Enter Tournament TeamSize">
+                    <br>
+                    <label for="tournament-entryFee">ENTRY FEE</label>
+                    <input type="text" id="tournament-entryFee" class="input form-control" aria-describedby="tournament-entryFee" placeholder="Enter Tournament entryFee">
+                    <br>
+                    <label for="tournament-prize">prize</label>
+                    <input type="text" id="tournament-prize" class="input form-control" aria-describedby="tournament-prize" placeholder="Enter Tournament prize">
+                    <br>
+                    <label for="tournament-Image">Image</label>
+                    <input type="text" id="tournament-Image" class="input form-control" aria-describedby="tournament-Image" placeholder="Enter Tournament Image">
+                </div>
+                <br>
+                <button id="submit" class="btn button is-black float-right">Submit</button>
+            </form>
+
+
+
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</section>
+
+
+</section>

@@ -1,6 +1,7 @@
 var db = require("../models");
 var getImage = require("./igdbApi");
 
+
 module.exports = function(app) {
 
   //Creates tournament and associated bracket

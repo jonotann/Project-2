@@ -10,10 +10,9 @@
 				<div class="navbar-end">
 					<div class="navButtons" id="navLi">
 						<ul class="level-item">
-							<li><a href="#" id="navList">Meet the Team</a></li>
-							<li><a href="#" id="navList">Social</a></li>
+							<li><a href="http://localhost:3000/" id="navList">Home</a></li>
+							<li><a href="http://localhost:3000/meettheteam" id="navList">Meet the Team</a></li>
 							<li><a href="http://localhost:3000/adminsignin" id="navList">Login</a></li>
-
 						</ul>
 					</div>
 				</div>
@@ -45,20 +44,21 @@
 								<input class="input is-centered" id="password" name="password" placeholder="Password" />
 							</p>
 						</div>
+						<div class="column level-right">
+							<div id="inputBtn" class="level is-centered">
+								<div class="column level-item has-text-centered">
+									<button class="button is-dark" type="submit" id="submitUser">Submit</button>
+
+									<a href="/{{otherAction}}" class="button is-dark" type="submit" id="submitUser">{{otherAction}}</a>
+								</div>
+							</div>
+
+						</div>
 					</form>
 				</div>
 			</div>
 			{{!-- RIGHT LEVEL --}}
-			<div class="column level-right">
-				<div id="inputBtn" class="level is-centered">
-					<div class="column level-item has-text-centered">
-						<button class="button is-dark" type="submit" id="submitUser">Submit</button>
-					
-						<a href="/{{otherAction}}" class="button is-dark" type="submit" id="submitUser">{{otherAction}}</a>
-					</div>
-				</div>
 
-			</div>
 		</div>
 	</div>
 </section>

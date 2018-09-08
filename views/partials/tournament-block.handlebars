@@ -1,20 +1,52 @@
-<li>
-    <img src="{{image}}">
-    Game: {{game}}
-    Registration End: {{regEnd}}
-    Tournament Start: {{tournStart}}
-    Total Teams/Players: {{totalTeams}}
-    Teams/Players currently registered: {{currentTeams}}
-    Team Size: {{teamSize}}
-    Entry Fee:{{entryFee}}
-    Prize: {{prize}}
-    <img src="{{image}}">
-    Game Type:
-    {{#if team}}
-        Team game
-    {{/if}}
-    {{#unless team}}
-        Solo game
-    {{/unless}}
-    <button class='join-tournament' data-id="{{id}}">Join</button>
-</li>
+<div class="hero is-fullheight">
+
+    <div  style="width:50" class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+            <div class="tile"  style="width:50">
+                <div class="tile is-parent is-vertical">
+                    <article id="tournamentBox" style="width:50%" >
+                        <ul>
+                            <li id="litour" class="level-left is-centered"><img src="{{image}}"></li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Game: {{game}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Registration End: {{regEnd}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Tournament Start: {{tournStart}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Total Teams/Players: {{totalTeams}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Teams/Players currently registered: {{currentTeams}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Team Size: {{teamSize}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Entry Fee:{{entryFee}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Prize: {{prize}}</li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">Game Type: {{#if team}} Team game {{/if}}
+                            </li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">
+                                {{#unless team}} Solo game {{/unless}}
+                            </li>
+                            <br>
+                            <li id="litour" class="level-left is-centered">
+                                <button class='join-tournament' data-id="{{id}}">Join</button>
+                            </li>
+                            <br>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="level">
+
+    </div>
+
+
+
+</div>

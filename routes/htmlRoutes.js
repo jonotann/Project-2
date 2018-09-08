@@ -5,33 +5,10 @@ var LocalStrategy = require('passport-local').Strategy;
 var orm = require('../db/orm.js');
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
-/*
-module.exports = function(app) {
+
+
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
-
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
-};
-*/
 
 //Setting the strategy for Passport
 passport.use(new LocalStrategy({passReqToCallback : true},
@@ -62,6 +39,24 @@ passport.deserializeUser(function(user, done) {
 
 module.exports = function(app){
 
+	  // Load tournament page and pass in an tournament by id
+		app.get("/tournament/:id", function(req, res) {
+			db.Tournament.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+				res.render("tournaments", {
+					tournament: dbTournaments
+				});
+			});
+		});
+
+		app.get("/tournaments", function(req, res) {
+			db.Tournament.findAll({}).then(function(dbTournaments) {
+				res.render("tournaments", {
+					msg: "Welcome!",
+					tournaments: dbTournaments
+				});
+			});
+		});
+
   //GETs
   app.get("/", function(req, res) {
       res.render("index", {
@@ -89,12 +84,30 @@ module.exports = function(app){
 		});
 	});
 
+	app.get("/", function(req, res) {
+    db.Tournament.findAll({}).then(function(dbTournaments) {
+      res.render("adminindex", {
+        msg: "Welcome!",
+        tournaments: dbTournaments
+      });
+    });
+	});
+	
+	app.get('/meettheteam', function(req, res) {
+		res.render('teamMeet', {
+
+		});
+	});
+
 	app.get('/authenticated', function(req,res){
 		if (req.isAuthenticated()) {
-			res.render('index', {
-        username: req.user.username,
-        message1: "<li><a href='http://localhost:3000'>sign out</a> admin has logged in</li>"
-			})
+			db.Tournament.findAll({}).then(function(dbTournaments) {
+			res.render('adminindex', {
+				message1: "<li id ='navList' >admin has logged in</li>",
+				message2: "<li><a href='http://localhost:3000' id ='navList'>sign out</a></li>",
+				tournaments: dbTournaments
+			});
+		})
 		} else {
 			res.redirect('/')
 		}
@@ -175,6 +188,4 @@ module.exports = function(app){
 		});
 	});
 
-
-};
-
+}
