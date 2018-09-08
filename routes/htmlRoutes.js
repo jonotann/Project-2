@@ -59,9 +59,7 @@ module.exports = function(app){
 */
   //GETs
   app.get("/", function(req, res) {
-      res.render("index", {
-      
-      });
+      res.render("index");
   });
 	app.get('/adminsignin', function(req, res){
 		res.render('adminlog', {
