@@ -72,9 +72,9 @@ module.exports = function(app){
 		});
 	});
 
-	app.get('/signin', function(req, res){
+	/*app.get('/signin', function(req, res){
 		res.redirect('/')
-	});
+	});*/
 
 	app.get('/signup', function(req, res){
 		res.render('adminlog', {
@@ -82,15 +82,6 @@ module.exports = function(app){
 			actionBtn: 'signup',
 			otherAction: "Signin"
 		});
-	});
-
-	app.get("/", function(req, res) {
-    db.Tournament.findAll({}).then(function(dbTournaments) {
-      res.render("adminindex", {
-        msg: "Welcome!",
-        tournaments: dbTournaments
-      });
-    });
 	});
 	
 	app.get('/meettheteam', function(req, res) {
