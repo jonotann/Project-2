@@ -45,7 +45,7 @@ $(document).ready(function() {
       data: playerId,
       dataType: 'json',
       success: function(result) {
-          alert("success?");
+          alert("success");
       }
   });
 

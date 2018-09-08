@@ -47,7 +47,7 @@ module.exports = function(app){
 				});
 			});
 		});
-
+/*
 		app.get("/tournaments", function(req, res) {
 			db.Tournament.findAll({}).then(function(dbTournaments) {
 				res.render("tournaments", {
@@ -56,7 +56,7 @@ module.exports = function(app){
 				});
 			});
 		});
-
+*/
   //GETs
   app.get("/", function(req, res) {
       res.render("index", {
@@ -72,9 +72,9 @@ module.exports = function(app){
 		});
 	});
 
-	/*app.get('/signin', function(req, res){
+	app.get('/signin', function(req, res){
 		res.redirect('/')
-	});*/
+	});
 
 	app.get('/signup', function(req, res){
 		res.render('adminlog', {
@@ -95,7 +95,7 @@ module.exports = function(app){
 			db.Tournament.findAll({}).then(function(dbTournaments) {
 			res.render('adminindex', {
 				message1: "<li id ='navList' >admin has logged in</li>",
-				message2: "<li><a href='http://localhost:3000' id ='navList'>sign out</a></li>",
+				message2: "<li><a href='/' id ='navList'>sign out</a></li>",
 				tournaments: dbTournaments
 			});
 		})
