@@ -12,17 +12,17 @@ if(process.env.JAWSDB_URL) {
 });
 };
 
-function connectToDB(){
-	connection.connect(function(err){
-		if (err) {
-			console.error('error connection:', err.stack);
-			return
-		}
-		console.log('connected to MySQL DB')
-	});
-}
 
-module.exports.connectToDB = connectToDB;
+connection.connect(function(err){
+	if (err) {
+		console.error('error connection:', err.stack);
+		return
+	}
+	console.log('connected to MySQL DB')
+});
+
+
+//module.exports.connectToDB = connectToDB;
 
 function addUserToDB(userObj, callback){
 	connection.query('INSERT INTO tblUsers SET ?', userObj, function(err, results){
