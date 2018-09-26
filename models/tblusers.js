@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var tbluser = sequelize.define('tbluser', {
+    var tblUser = sequelize.define('tbluser', {
         userId: {
             type: DataTypes.INTEGER,
             primaryKey: true
@@ -8,5 +8,5 @@ module.exports = function(sequelize, DataTypes) {
         password: DataTypes.STRING
     });
 
-    return tbluser;
+    return tblUser;
 };
