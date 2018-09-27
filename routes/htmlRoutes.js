@@ -164,7 +164,7 @@ module.exports = function(app){
 
 			console.log(searchArray);
 			//Pulls team info for each id provided and renders.
-			db.tbluser.findAll({attributes: ['username'], where: {userId: {[Op.or]: searchArray}}}).then(function(response) {
+			db.tblUser.findAll({attributes: ['username'], where: {userId: {[Op.or]: searchArray}}}).then(function(response) {
 				
 				console.log(response);
 
